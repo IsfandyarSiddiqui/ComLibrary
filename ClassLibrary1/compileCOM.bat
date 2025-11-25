@@ -10,7 +10,7 @@ set DLL=ClassLibrary1.dll
 :: Choose the right regasm path
 :: If you compile x86 use Framework
 :: If you compile x64 use Framework64
-set REGASM=C:\Windows\Microsoft.NET\Framework64\v4.0.30319\regasm.exe
+set REGASM=C:\Windows\Microsoft.NET\Framework\v4.0.30319\regasm.exe
 
 :: Unregister old version
 echo Unregistering old COM object...
@@ -23,11 +23,13 @@ if exist "ClassLibrary1.tlb" del "ClassLibrary1.tlb"
 echo Registering new COM object...
 
 "%REGASM%" "%DLL%" /codebase /tlb
-"C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/gacutil.exe" /i "%DLL%"
+
+:: GACUTIL is generally not required if /codebase is used, but kept for completeness
+:: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/gacutil.exe" /i "%DLL%"
 
 :: Restart IIS (optional)
-echo Restarting IIS...
-iisreset
+:: echo Restarting IIS...
+:: iisreset
 
 echo Done.
 endlocal
