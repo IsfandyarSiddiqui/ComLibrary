@@ -13,8 +13,12 @@ var options = new BulkCopyOptions
 };
 
 db.DropTable<User>();
+db.DropTable<UserLogs>();
 db.CreateTable<User>();
+db.CreateTable<UserLogs>();
+
 db.BulkCopy(options, User.CreateFakeUsers(20));
+
 
 //var users = db.Query<User>("select * from Users").ToList();
 var users = await db.Users.ToArrayAsync();

@@ -38,4 +38,7 @@ namespace GenericDBGeneration.Tables;
 }
 
 [Table("UsersLogs")]
-public class UserLogs: LogTableBase {}
+public class UserLogs : LogTableBase
+{
+    [Association()] public override int originalId { get; set; }
+}

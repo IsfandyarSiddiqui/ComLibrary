@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="BogusData\" />
+    <Folder Include="Triggers\" />
   </ItemGroup>
 
 </Project>

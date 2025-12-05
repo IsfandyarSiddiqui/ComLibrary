@@ -14,12 +14,9 @@ public abstract class LogableBase
 public abstract class LogTableBase: LogableBase
 {
     [PrimaryKey, Identity] public int logId { get; set; } // Log tables need their own PK
-
-    public int originalId { get; set; } 
-
-    public SQLActionType actionType { get; set; }
-
     [Column(DbType = "NVARCHAR(MAX)"), NotNull] public required string changes { get; set; }
+    public SQLActionType actionType { get; set; }
+    public abstract int originalId { get; set; } 
 }
 
 public enum SQLActionType
