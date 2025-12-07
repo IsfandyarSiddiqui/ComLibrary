@@ -6,12 +6,9 @@ using LinqToDB.Data;
 using System.Linq.Expressions;
 //using Microsoft.IdentityModel.Tokens;
 
+SqkGen(u => u.userId > 10);
 
-
-RunManualExpressionDemo(u => u.userId > 10);
-
-
-void RunManualExpressionDemo(Expression<Func<User, bool>> expr)
+void SqkGen(Expression<Func<User, bool>> expr)
 {
     Console.WriteLine("--- Starting Lambda Expression Demo ---");
     // Now you just visit the body, exactly like before
@@ -21,7 +18,6 @@ void RunManualExpressionDemo(Expression<Func<User, bool>> expr)
     Console.WriteLine($"Generated SQL: {sql}");
     Console.WriteLine("--- End Demo ---");
 }
-
 
 //await GenerateSomeSqlAsync();
 async Task GenerateSomeSqlAsync()

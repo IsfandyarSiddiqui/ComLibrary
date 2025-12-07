@@ -35,6 +35,37 @@ namespace SQLConstants.Operators
         public const string Not = " NOT ";
         public const string Like = "  LIKE ";
     }
+
+    public static class Arithmetic
+    {
+        public const string Add = " + ";
+        public const string Subtract = " - ";
+        public const string Multiply = " * ";
+        public const string Divide = " / ";
+        public const string Modulo = " % ";
+    }
+
+    public static class Bitwise
+    {
+        public const string And = " AND ";
+        public const string Or = " OR ";
+        //public const string Xor = " ^ ";
+        public const string Not = " NOT ";
+    }
+
+    public static class Assignment
+    {
+        public const string Equal = " = ";
+        //public const string AddEqual = " += ";
+        //public const string SubtractEqual = " -= ";
+        //public const string MultiplyEqual = " *= ";
+        //public const string DivideEqual = " /= ";
+        //public const string ModuloEqual = " %= ";
+        //public const string AndEqual = " &= ";
+        //public const string OrEqual = " |= ";
+        //public const string XorEqual = " ^= ";
+    }
+
 }
 
 
