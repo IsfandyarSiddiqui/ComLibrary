@@ -8,18 +8,15 @@ namespace GenericDBGeneration.Tables;
 [Table("Users")] public class User: LogableBase
 {
     [PrimaryKey, Identity] public int userId { get; set; }
-    
     [Str64] public required string fullName { get; set; }
-
     [Str32] public required string preferedName { get; set; }
-
     [Str64] public required string password { get; set => field = Crypto.sha256(value); }
-
     [Str64] public string? email { get; set; }
 
     private const string gmail = "gmail.com";
     private const string outlook = "outlook.com";
     private static readonly string[] dummyPasswords = ["aa", "aaa", "aaaa"];
+    
     public static List<User> CreateFakeUsers(int count) =>
         new Faker<User>()
         .Rules((f, u) =>
@@ -40,5 +37,6 @@ namespace GenericDBGeneration.Tables;
 [Table("UsersLogs")]
 public class UserLogs : LogTableBase
 {
-    [Association()] public override int originalId { get; set; }
+    [Association(ThisKey = nameof(originalId), OtherKey = nameof(User.userId), CanBeNull = false)]
+    public override int originalId { get; set; }
 }
