@@ -37,6 +37,8 @@ namespace GenericDBGeneration.Tables;
 [Table("UsersLogs")]
 public class UserLogs : LogTableBase
 {
+    public UserLogs(User u, SQLActionType actionType) : base(u, actionType) {}
+
     [Association(ThisKey = nameof(originalId), OtherKey = nameof(User.userId), CanBeNull = false)]
     public override int originalId { get; set; }
 }

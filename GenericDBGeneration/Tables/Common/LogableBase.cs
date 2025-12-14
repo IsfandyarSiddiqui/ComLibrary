@@ -13,6 +13,16 @@ public abstract class LogableBase
 
 public abstract class LogTableBase: LogableBase
 {
+    protected LogTableBase(LogableBase logableBase, SQLActionType sqlActionType)
+    {
+        lastActionByUserId = logableBase.lastActionByUserId;
+        lastActionDate = logableBase.lastActionDate;
+        logId = -1;
+        changes = string.Empty;
+        actionType = sqlActionType;
+        originalId = -1;
+    }
+
     [PrimaryKey, Identity] public int logId { get; set; } // Log tables need their own PK
     [Column(DbType = "NVARCHAR(MAX)"), NotNull] public required string changes { get; set; }
     public SQLActionType actionType { get; set; }
