@@ -1,14 +1,24 @@
 ﻿using LinqToDB.Mapping;
+using System.Runtime.CompilerServices;
 
 namespace GenericDBGeneration.Tables.Common;
 
-public abstract class LogableBase
+public abstract class LogableBase: ITableTag
 {
     [Column(DbType = "DateTime2 DEFAULT GETUTCDATE()", CanBeNull = false, SkipOnInsert = true, SkipOnUpdate = true)] 
     public DateTime lastActionDate { get; set; }
     
     [NotNull] 
     public int lastActionByUserId { get; set; }
+}
+
+public class ConcreteLogableBase : LogableBase { }
+public class ConcreteLogTableBase : LogTableBase
+{
+    public ConcreteLogTableBase(ConcreteLogableBase logableBase, SQLActionType sqlActionType) 
+        : base(logableBase, sqlActionType) { }
+    public override int originalId { get; set; } = -1;
+
 }
 
 public abstract class LogTableBase: LogableBase

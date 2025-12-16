@@ -13,5 +13,6 @@ public class AppDataConnection : DataConnection
 
     // This property exposes the User entity as an operable table (ITable<T>) 
     // within the context, allowing you to run LINQ queries against it.
-    public ITable<User> Users => this.GetTable<User>();
+    public ITable<Users> Users => this.GetTable<Users>();
+    public ITable<UserLogs> UserLogs => this.GetTable<UserLogs>();
 }

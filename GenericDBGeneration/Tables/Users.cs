@@ -5,7 +5,7 @@ using GenericDBGeneration.Utils;
 
 namespace GenericDBGeneration.Tables;
 
-[Table("Users")] public class User: LogableBase
+[Table("Users")] public class Users: LogableBase
 {
     [PrimaryKey, Identity] public int userId { get; set; }
     [Str64] public required string fullName { get; set; }
@@ -17,8 +17,8 @@ namespace GenericDBGeneration.Tables;
     private const string outlook = "outlook.com";
     private static readonly string[] dummyPasswords = ["aa", "aaa", "aaaa"];
     
-    public static List<User> CreateFakeUsers(int count) =>
-        new Faker<User>()
+    public static List<Users> CreateFakeUsers(int count) =>
+        new Faker<Users>()
         .Rules((f, u) =>
         {
             u.fullName = f.Name.FullName();
@@ -37,8 +37,8 @@ namespace GenericDBGeneration.Tables;
 [Table("UsersLogs")]
 public class UserLogs : LogTableBase
 {
-    public UserLogs(User u, SQLActionType actionType) : base(u, actionType) {}
+    public UserLogs(Users u, SQLActionType actionType) : base(u, actionType) {}
 
-    [Association(ThisKey = nameof(originalId), OtherKey = nameof(User.userId), CanBeNull = false)]
+    [Association(ThisKey = nameof(originalId), OtherKey = nameof(Users.userId), CanBeNull = false)]
     public override int originalId { get; set; }
 }
