@@ -2,6 +2,7 @@
 using GenericDBGeneration.MyLinqSql;
 using GenericDBGeneration.Tables;
 using GenericDBGeneration.Tables.Common;
+using GenericDBGeneration.Triggers;
 using LinqToDB;
 using LinqToDB.Data;
 
@@ -11,8 +12,21 @@ var myUsersTable = new Users() {
     password = "password",
 };
 var myUserLogsTable = new UserLogs(myUsersTable, SQLActionType.Insert) { changes = ""};
-var th = new TriggerHelper();
-th.Create(nameof(AppDataConnection.UserLogs));
+
+TriggerType[] tts = [TriggerType.Insert, TriggerType.Delete, TriggerType.Update];
+foreach(var tt in tts)
+{
+    var temp = LogginTriggers.Create
+    (
+        nameof(AppDataConnection.Users),
+        nameof(AppDataConnection.UserLogs),
+        nameof(AppDataConnection.Users),
+        tt
+    );
+    Console.WriteLine(temp);
+    Console.WriteLine();
+}
+
 
 //await GenerateSomeSqlAsync();
 async Task GenerateSomeSqlAsync()

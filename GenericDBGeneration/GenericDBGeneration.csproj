@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tables\SqlExamples\" />
-    <Folder Include="Triggers\" />
+    <Folder Include="SqlExamples\" />
   </ItemGroup>
 
 </Project>

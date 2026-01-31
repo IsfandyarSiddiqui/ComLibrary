@@ -1,21 +1,18 @@
-﻿using Bogus.Platform;
-using GenericDBGeneration.Tables;
-using GenericDBGeneration.Tables.Common;
+﻿using GenericDBGeneration.Tables.Common;
 using Microsoft.Data.SqlClient;
 using SqlKata;
 using SqlKata.Compilers;
 using SqlKata.Execution;
-using System.Reflection;
 
 namespace GenericDBGeneration.MyLinqSql;
 
-public class TriggerHelper
+public class CustomQueries
 {
     SqlServerCompiler sqlCompiler = new();
     SqlConnection conn = new(Resources.ConnectionString);
     QueryFactory dbFactory;
 
-    public TriggerHelper() => this.dbFactory = new QueryFactory(conn, sqlCompiler);
+    public CustomQueries() => this.dbFactory = new QueryFactory(conn, sqlCompiler);
 
     public void Create(string ltbName)
     {
@@ -31,7 +28,4 @@ public class TriggerHelper
         Console.WriteLine(res.Sql);
     }
 }
-
-public enum TriggerType { Insert, Update, Delete }
-
 
