@@ -1,5 +1,4 @@
 ﻿using GenericDBGeneration;
-using GenericDBGeneration.MyLinqSql;
 using GenericDBGeneration.Tables;
 using GenericDBGeneration.Tables.Common;
 using GenericDBGeneration.Triggers;

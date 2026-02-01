@@ -2,9 +2,8 @@
 using System.Linq.Expressions;
 using SQLConstants;
 using SQLConstants.Operators;
-using GenericDBGeneration.Tables;
 
-namespace GenericDBGeneration.MyLinqSql;
+namespace GenericDBGeneration.Depreceated.MyLinqSql;
 
 public class SimpleSqlVisitor : ExpressionVisitor
 {
@@ -133,6 +132,7 @@ public class SimpleSqlVisitor : ExpressionVisitor
         ExpressionType.OnesComplement => throw new NotImplementedException(),
         ExpressionType.IsTrue => throw new NotImplementedException(),
         ExpressionType.IsFalse => throw new NotImplementedException(),
+        _ => throw new NotImplementedException(),
 
         // Default
         //_ => throw new NotImplementedException($"Binary expression type '{node.NodeType}' is not supported.")

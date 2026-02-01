@@ -1,0 +1,67 @@
+SYSTEM ARCHITECTURE BLUEPRINT: The Universal Data Fabric
+1. Project Mission
+To build a Domain-Agnostic Data Simulation Engine. The goal is not to build specific applications (like a store or a hospital), but to create a Universal Sandbox that can model any complex real-world scenario. This system serves as a "Flight Simulator" for software architects, allowing them to instantly spin up complex data structures to practice specific advanced concepts (Microservices, Data Science, Compliance, High-Frequency Trading).
+
+2. Core Architecture: "Hub-and-Spoke"
+The system utilizes a Shared Kernel (Hub) and Dynamic Contexts (Spokes).
+
+The Hub (Core Domain): Handles universal concerns required by every modern system: Identity (Users), Authentication, Global Audit Logging, and System Health.
+
+The Spokes (Pluggable Scenarios): The engine must support plugging in any number of isolated modules. The specific modules (EHR, LMS, Crypto Exchange) are arbitrary; they are chosen only because they force the system to handle specific architectural challenges (see Section 4).
+
+3. The Simulation Engine Features (The "Why")
+The generator is a State Machine designed to solve specific learning gaps:
+
+A. Temporal Simulation (Solving: "Static Data Syndrome")
+
+Problem: Standard dummy data is static (t=0), making it impossible to learn Time-Series Analysis or Caching.
+
+Solution: The engine must generate Historical Timelines. It must be able to backfill data from t-5 years to t=0 using configurable growth curves (Linear, Exponential, Seasonal). This allows the user to practice "Time Travel" queries and data aging strategies.
+
+B. Entropy & Chaos (Solving: "Happy Path Bias")
+
+Problem: Perfect dummy data prevents learning Data Engineering and Advanced SQL cleanup.
+
+Solution: The engine must include a "Chaos Protocol." It should optionally inject dirty data: broken encodings, orphaned foreign keys, and duplicate identities. This forces the user to write robust code that handles real-world messiness.
+
+C. The "Legal" Layer (Solving: "Compliance Complexity")
+
+Problem: Most tutorials ignore legal constraints like HIPAA or GDPR.
+
+Solution: Every entity must support deep auditing via Immutable Logs. The system uses SQL Triggers and JSON snapshots to track who changed what and when, enabling Event Sourcing experiments.
+
+4. Reference Archetypes (The "What" serves the "Why")
+These are illustrative examples of why specific data structures are needed. The engine is not limited to these, but uses them to test specific capabilities.
+
+Archetype A: High-Concurrency Transactional (e.g., E-Commerce / Stock Trading)
+
+Why we need this: To stress-test the engine's handling of Locking, Race Conditions, and Inventory Management.
+
+Scenario: A system where thousands of "Orders" fight for limited "Stock."
+
+Requirement: The engine must simulate high-volume write operations and transactional integrity.
+
+Archetype B: Deep Hierarchical Data (e.g., LMS / Organizational Charts)
+
+Why we need this: To force the implementation of Recursive Queries (CTEs) and Graph structures.
+
+Scenario: A "Course" contains "Modules," which contain "Lessons," which contain "Quizzes."
+
+Requirement: The engine must generate deep, self-referencing tree structures to practice tree-traversal algorithms.
+
+Archetype C: High-Compliance & Privacy (e.g., EHR / Banking)
+
+Why we need this: To practice Row-Level Security, Encryption, and Document Storage.
+
+Scenario: "Patient Records" that contain unstructured clinical data (JSON) mixed with structured PII.
+
+Requirement: The engine must demonstrate how to isolate sensitive data and handle unstructured documents within a relational schema.
+
+5. Technical Stack
+Language: C# (.NET 10).
+ORM: linq2db (Performance focused).
+Faker: Bogus library for semantic data generation.
+
+Database: SQL Server (Targeting 2022+ features).
+
+Schema Rule: All tables must have surrogate PKs. All tables must handle "Soft Deletes" via status flags or Audit Triggers.

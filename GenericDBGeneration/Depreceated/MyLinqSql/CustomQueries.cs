@@ -4,7 +4,7 @@ using SqlKata;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 
-namespace GenericDBGeneration.MyLinqSql;
+namespace GenericDBGeneration.Depreceated.MyLinqSql;
 
 public class CustomQueries
 {
